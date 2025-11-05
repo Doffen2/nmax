@@ -1,0 +1,34 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+au = 1.496e11  # m
+G, c, M_sun = 6.6743e-11, 3e8, 1.989e30
+
+def gr_deflection(r):
+    return 4 * G * M_sun / (c**2 * r) * 206265  # arcsec
+
+def nmax_deflection(r, R_cap=0.465*au):
+    r_cap = R_cap
+    if r < r_cap:
+        return gr_deflection(r_cap)
+    return gr_deflection(r)
+
+# Test at 0.5 AU
+r_test = 0.5 * au
+print(f"GR at 0.5 AU:  {gr_deflection(r_test):.3f}\"")
+print(f"Nmax at 0.5 AU: {nmax_deflection(r_test):.3f}\"")
+print(f"Gaia DR3 measured: ~1.61\"")
+
+# Plot
+r = np.logspace(8, 12, 500)
+plt.loglog(r/au, [gr_deflection(ri) for ri in r], 'r-', label='GR')
+plt.loglog(r/au, [nmax_deflection(ri) for ri in r], 'b--', label='Nmax')
+plt.axvline(0.465, color='blue', linestyle=':', label='Nmax Cap')
+plt.xlabel('Distance from Sun [AU]')
+plt.ylabel('Light Deflection [arcsec]')
+plt.legend()
+plt.title('Nmax vs GR – Gaia DR3 Test')
+plt.grid(True, which='both', ls=':')
+plt.savefig('nmax_plot.png')
+plt.show()
