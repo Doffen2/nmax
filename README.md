@@ -1,5 +1,5 @@
 # nmax
-The Grude Nmax Hypothesis proposes a scalar boson field, Nmax (~1.78e-17 eV, Compton
+The Nmax Hypothesis proposes a scalar boson field, Nmax (~1.78e-17 eV, Compton
 wavelength ~0.465 AU), as a counterbalance to the Higgs field in a yin-yang duality. Developed by a
 ham radio operator with a wave-based perspective, Nmax limits spacetime curvature, prevents
 singularities, stabilizes wormholes, and produces neutrinos via Higgs interactions. It addresses
